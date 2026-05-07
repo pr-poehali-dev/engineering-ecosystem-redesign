@@ -7,6 +7,7 @@ export default {
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
+			"./1778150422948002337.html"
 	],
 	prefix: "",
 	theme: {
@@ -18,6 +19,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				oswald: ['Oswald', 'sans-serif'],
+				ibm: ['IBM Plex Sans', 'sans-serif'],
+				mono: ['IBM Plex Mono', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +67,19 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				gold: {
+					DEFAULT: '#C9A84C',
+					light: '#E8C97A',
+					dark: '#8B6914',
+				},
+				coal: '#0D0D0D',
+				steel: {
+					DEFAULT: '#1A1A1A',
+					mid: '#2A2A2A',
+					light: '#3D3D3D',
+				},
+				chrome: '#9A9A9A',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
