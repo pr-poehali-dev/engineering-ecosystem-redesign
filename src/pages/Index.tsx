@@ -313,34 +313,87 @@ export default function Index() {
       <section className="py-24 bg-steel relative overflow-hidden">
         <div className="eng-grid absolute inset-0 opacity-20" />
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-16 items-center">
-            <div className="lg:w-5/12">
+          {/* Section header */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+            <div>
               <div className="section-label mb-4">— Почему выбирают нас</div>
-              <h2 className="font-oswald text-5xl lg:text-6xl uppercase text-white mb-6">
+              <h2 className="font-oswald text-5xl lg:text-6xl uppercase text-white">
                 SmartCom<br /><span className="text-gold-gradient">— это</span>
               </h2>
-              <p className="font-ibm text-chrome leading-relaxed mb-8">
-                Мы не просто монтажники — мы инженерная компания полного цикла. Наши специалисты прошли обучение у ведущих производителей оборудования и регулярно повышают квалификацию.
+            </div>
+            <p className="font-ibm text-chrome max-w-sm text-sm leading-relaxed">
+              Мы не просто монтажники — мы инженерная компания полного цикла. 9 лет опыта, 500+ объектов в Крыму.
+            </p>
+          </div>
+
+          {/* Main block: image + floating cards */}
+          <div className="relative">
+            {/* Photo */}
+            <div className="relative overflow-hidden" style={{ height: '520px' }}>
+              <img
+                src="https://cdn.poehali.dev/projects/5c4413ec-a7be-4ca6-9ea9-a0c5fdd7e304/files/fa9dc12b-fad4-426e-8f9e-29ac9bfd60f7.jpg"
+                alt="Команда SmartCom"
+                className="w-full h-full object-cover"
+                style={{ filter: 'brightness(0.45) saturate(0.8)' }}
+              />
+              {/* Gradient overlays */}
+              <div className="absolute inset-0 bg-gradient-to-r from-steel via-transparent to-steel/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-steel via-transparent to-transparent" />
+              {/* Engineering grid overlay */}
+              <div className="absolute inset-0 eng-grid opacity-20" />
+
+              {/* Tech corner labels */}
+              <div className="absolute top-5 left-5 font-mono text-gold/50 text-xs tracking-widest">
+                TEAM / 2025
+              </div>
+              <div className="absolute top-5 right-5 font-mono text-gold/40 text-xs tracking-widest text-right">
+                SMARTCOM ENG.<br />СИМФЕРОПОЛЬ
+              </div>
+
+              {/* Floating stat cards — positioned absolutely over the image */}
+              <div className="absolute inset-0 p-8 flex items-end">
+                <div className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                  {advantages.map((a, i) => (
+                    <button
+                      key={a.value}
+                      onClick={() => openLead('client')}
+                      className="group relative bg-coal/70 backdrop-blur-sm border border-steel-light hover:border-gold hover:bg-coal/90 transition-all duration-400 p-4 text-left overflow-hidden"
+                      style={{
+                        animation: `fadeInUp 0.5s ease forwards`,
+                        animationDelay: `${i * 0.07}s`,
+                        opacity: 0,
+                      }}
+                    >
+                      {/* Animated gold line on hover */}
+                      <div className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full bg-gold transition-all duration-400" />
+                      {/* Corner dot */}
+                      <div className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-gold/30 group-hover:bg-gold transition-colors duration-300" />
+
+                      <div className="w-8 h-8 border border-gold/30 group-hover:border-gold flex items-center justify-center mb-3 transition-all duration-300 group-hover:bg-gold/10">
+                        <Icon name={a.icon} size={14} className="text-gold" />
+                      </div>
+                      <div className="font-oswald text-2xl text-white group-hover:text-gold transition-colors duration-300 leading-none mb-1">
+                        {a.value}
+                      </div>
+                      <div className="font-ibm text-chrome text-[11px] leading-tight">{a.label}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom CTA bar */}
+            <div className="bg-coal border border-steel-mid border-t-0 flex flex-col sm:flex-row items-center justify-between gap-4 px-8 py-5">
+              <p className="font-ibm text-chrome text-sm">
+                <span className="text-gold font-oswald text-base uppercase">Бесплатный выезд инженера</span> — оцениваем объект без обязательств
               </p>
               <button
                 onClick={() => openLead('client')}
-                className="btn-gold px-8 py-3.5 text-sm rounded-sm inline-flex items-center gap-2"
+                className="btn-gold px-8 py-3 text-sm rounded-sm inline-flex items-center gap-2 flex-shrink-0"
               >
-                <Icon name="Phone" size={16} />
-                Получить консультацию инженера
+                <Icon name="Phone" size={15} />
+                Получить консультацию
               </button>
-            </div>
-
-            <div className="lg:w-7/12 grid grid-cols-2 md:grid-cols-3 gap-4">
-              {advantages.map((a) => (
-                <div key={a.value} className="border border-steel-light bg-coal p-5 card-hover group">
-                  <div className="w-10 h-10 border border-gold/30 group-hover:border-gold flex items-center justify-center mb-3 transition-colors duration-300">
-                    <Icon name={a.icon} size={18} className="text-gold" />
-                  </div>
-                  <div className="font-oswald text-3xl text-white mb-1">{a.value}</div>
-                  <div className="font-ibm text-chrome text-xs">{a.label}</div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
